@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  background-color: #1a8917;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0px;
+  z-index: 999;
+  border: 2px solid #00701a;
+  border-radius: 6px;
+}
+
+.message {
+  font-size: 18px;
+  color: white;
+}

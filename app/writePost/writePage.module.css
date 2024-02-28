@@ -1,0 +1,98 @@
+.container {
+  height: auto;
+}
+
+.select {
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  margin-left: 50px;
+  width: max-content;
+  outline: none;
+  /* border: none; */
+}
+
+.editor {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  height: 300px;
+  position: relative;
+}
+
+.quillContainer {
+  display: flex;
+  margin-bottom: 50px;
+  gap: 20px;
+  height: 700px;
+  position: relative;
+}
+
+.button,
+.addButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addButton {
+  border-color: #1a8917;
+}
+
+.add {
+  display: flex;
+  gap: 20px;
+  background-color: var(--bg);
+
+  position: absolute;
+  z-index: 998;
+  width: 100%;
+  left: 50px;
+}
+
+.input {
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--textColor);
+}
+
+.input::placeholder {
+  color: #1a8917;
+}
+.textArea {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.publish {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+  border-radius: 20px;
+}
+
+/* .publish[disabled] {
+  opacity: 0.5;
+  color: rgb(153, 153, 153);
+  cursor: not-allowed;
+  background-color: #ddd;
+} */
+
+@media screen and (max-width: 1270px) {
+  .publish {
+    position: unset;
+  }
+}

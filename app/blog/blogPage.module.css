@@ -1,0 +1,15 @@
+.title {
+  background-color: coral;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 10px;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+}

@@ -1,0 +1,63 @@
+import React from 'react';
+import menu from '../menu/Menu.jsx';
+import Link from 'next/link';
+import styles from './menuPosts.module.css';
+import Image from 'next/image';
+
+const fetchPopularPosts = async () => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/popularPosts`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch popular posts');
+    }
+    const res = await response.json();
+    return res.posts;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const MenuPosts = async ({ withImage }) => {
+  const data = await fetchPopularPosts();
+  // console.log(data);
+
+  return (
+    <div className={styles.items}>
+      {data?.map(post => (
+        <Link key={post._id} href="/" className={styles.item}>
+          {withImage && (
+            <div className={styles.imageContainer}>
+              <Image
+                src={post.image || '/images/df3.png'}
+                alt=""
+                fill
+                className={styles.image}
+              />
+            </div>
+          )}
+          <div className={styles.textContainer}>
+            <span
+              className={`${styles.category} ${styles[post.category]}`}
+            >
+              {post.category}
+            </span>
+            <h3 className={styles.postTitle}>{post.title}</h3>
+            <p>
+              {post.desc.slice(0, 60) +
+                (post.desc.length > 40 ? '...' : '')}
+            </p>
+            <div className={styles.detail}>
+              <span className={styles.username}> {post.user}</span>
+              <span className={styles.date}>
+                {' '}
+                - {post.date.split('T')[0]}
+              </span>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default MenuPosts;
