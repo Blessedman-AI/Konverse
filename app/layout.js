@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <AuthProvider> */}
+        <AuthProvider>
           <ThemeContextProvider>
             <ThemeProvider>
               <div className="container">
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
               </div>
             </ThemeProvider>
           </ThemeContextProvider>
-        {/* </AuthProvider> */}
+        </AuthProvider>
       </body>
     </html>
   );
