@@ -2,9 +2,11 @@ import styles from './categoryList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/categories', {
-    cache: 'no-store',
+  const res = await fetch(`${API_URL}/api/categories`, {
+    next: { revalidate: 10 },
   });
 
   if (!res.ok) {

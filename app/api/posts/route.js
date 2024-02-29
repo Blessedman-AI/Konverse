@@ -51,7 +51,7 @@ export const POST = async req => {
 
   try {
     const body = await req.json();
-    console.log(body);
+    // console.log(body);
 
     // Check if required fields are present in the request body
     if (!body.title || !body.desc || !body.catSlug) {

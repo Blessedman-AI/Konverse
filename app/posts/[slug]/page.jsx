@@ -3,9 +3,11 @@ import Menu from '../../components/menu/Menu';
 import styles from './singePage.module.css';
 import Comments from '../../components/comments/comments';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const getData = async slug => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
-    cache: 'no-store',
+  const res = await fetch(`${API_URL}/api/posts/${slug}`, {
+    next: { revalidate: 10 },
   });
 
   if (!res.ok) {

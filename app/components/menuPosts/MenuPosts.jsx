@@ -4,9 +4,11 @@ import Link from 'next/link';
 import styles from './menuPosts.module.css';
 import Image from 'next/image';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const fetchPopularPosts = async () => {
   try {
-    const response = await fetch(`http://localhost:3000/api/popularPosts`);
+    const response = await fetch(`${API_URL}/api/popularPosts`);
     if (!response.ok) {
       throw new Error('Failed to fetch popular posts');
     }

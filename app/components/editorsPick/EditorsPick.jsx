@@ -3,9 +3,11 @@ import Link from 'next/link';
 import styles from './editorsPick.module.css';
 import Image from 'next/image';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const getEditorsPick = async () => {
   try {
-    const response = await fetch(`http://localhost:3000/api/editorsPick`);
+    const response = await fetch(`${API_URL}/api/editorsPick`);
     if (!response.ok) {
       throw new Error("Failed to fetch editor's picks!");
     }
@@ -18,7 +20,7 @@ const getEditorsPick = async () => {
 
 const EditorsPick = async ({ withImage }) => {
   const data = await getEditorsPick();
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={styles.items}>
