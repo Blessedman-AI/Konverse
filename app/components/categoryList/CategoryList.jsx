@@ -41,8 +41,7 @@ const CategoryList = () => {
   if (isLoading) {
     return (
       <div className={styles.container}>
-        {' '}
-        <p className={styles.categories}>Loading categories...</p>{' '}
+        <p className={styles.categories}>Loading categories...</p>
       </div>
     );
   }
