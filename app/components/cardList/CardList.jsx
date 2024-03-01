@@ -56,21 +56,26 @@ const CardList = ({ page, cat }) => {
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
 
   if (isLoading) {
-    return <div>Loading posts...</div>;
+    return (
+      <div className={styles.container}>
+        <p className={styles.posts}> Loading posts...</p>
+      </div>
+    );
   }
 
   // Handle both error and loading states with a unified approach
   if (error || posts?.length === 0) {
     return (
       <div className={styles.container}>
-        <h1 className={styles.title}>Unable to Load Posts</h1>
         <p className={styles.errorText}>
-          {error ? error.message : 'Posts are still loading. Please wait.'}
+          {error
+            ? 'Unable to load posts'
+            : 'Posts are still loading. Please wait.'}
         </p>
-        {/* Optionally, add a retry button here */}
       </div>
     );
   }
+  console.log(error?.message);
 
   if (posts?.length > 0) {
     return (
