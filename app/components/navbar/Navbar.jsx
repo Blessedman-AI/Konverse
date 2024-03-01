@@ -14,12 +14,19 @@ const Navbar = () => {
           width={24}
           height={24}
         />
-        <Image
-          src={'/images/instagram.png'}
+        <img
+          src="/images/instagram.png"
+          alt="instagram icon"
+          width="24"
+          height="24"
+        />
+
+        {/* <Image
+          src='/images/instagram.png'
           alt="instagram icon"
           width={24}
           height={24}
-        />
+        /> */}
         <Image
           src="/images/twitter.png"
           alt="twitter icon"
