@@ -75,7 +75,7 @@ const CardList = ({ page, cat }) => {
       </div>
     );
   }
-  console.log(error?.message);
+  // console.log(error?.message);
 
   if (posts?.length > 0) {
     return (

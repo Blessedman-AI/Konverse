@@ -138,9 +138,9 @@ const WritePage = () => {
       setIsPublished(true);
       setIsPublishing(false);
       setTimeout(() => setIsPublished(false), 2000);
-      // setTimeout(() => {
-      //   router.push(`/`);
-      // }, 3000);
+      setTimeout(() => {
+        router.push(`/`);
+      }, 2000);
     } else if (res.status === 404 || res.status === 500) {
       setIsPublishing(false);
       setServerErrMsg(true);
