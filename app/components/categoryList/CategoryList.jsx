@@ -58,7 +58,7 @@ const CategoryList = () => {
       </div>
     );
   }
-  console.log(data);
+  // console.log(data);
 
   if (data?.length > 0) {
     return (
