@@ -9,32 +9,26 @@ const Navbar = () => {
     <div className={styles.container}>
       <div className={styles.social}>
         <Image
-          src="/images/facebook.png"
+          src="/Images/facebook.png"
           alt="facebook icon"
           width={24}
           height={24}
         />
-        <img
-          src="/images/instagram.png"
-          alt="instagram icon"
-          width="24"
-          height="24"
-        />
 
-        {/* <Image
-          src='/images/instagram.png'
+        <Image
+          src="/Images/instagram.png"
           alt="instagram icon"
           width={24}
           height={24}
-        /> */}
+        />
         <Image
-          src="/images/twitter.png"
+          src="/Images/twitter.png"
           alt="twitter icon"
           width={24}
           height={24}
         />
         <Image
-          src="/images/youtube.png"
+          src="/Images/youtube.png"
           alt="youtube icon"
           width={24}
           height={24}

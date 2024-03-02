@@ -21,7 +21,7 @@ const ThemeToggle = () => {
           : { background: '#0f172a' }
       }
     >
-      <Image src="/images/sun.png" alt="" width={14} height={14} />
+      <Image src="/Images/sun.png" alt="" width={14} height={14} />
       <div
         className={styles.ball}
         style={
@@ -30,7 +30,7 @@ const ThemeToggle = () => {
             : { right: 1, backgroundColor: 'white' }
         }
       ></div>
-      <Image src="/images/crescent.png" alt="" width={14} height={14} />
+      <Image src="/Images/crescent.png" alt="" width={14} height={14} />
     </div>
   );
 };

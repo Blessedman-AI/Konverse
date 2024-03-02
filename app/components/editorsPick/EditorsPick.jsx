@@ -53,7 +53,7 @@ const EditorsPick = ({ withImage }) => {
               {withImage && (
                 <div className={styles.imageContainer}>
                   <Image
-                    src={post.image || '/images/df3.png'}
+                    src={post.image || '/Images/df3.png'}
                     alt=""
                     fill
                     className={styles.image}

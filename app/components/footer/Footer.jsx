@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.info}>
         <div className={styles.logoContainer}>
           <Image
-            src="/images/cc.jpg"
+            src="/Images/cc.jpg"
             alt="Beemhan's blog"
             width={50}
             height={50}
@@ -23,19 +23,19 @@ const Footer = () => {
         </p>
         <div className={styles.icons}>
           <Image
-            src="/images/facebook.png"
+            src="/Images/facebook.png"
             alt=""
             width={18}
             height={18}
           />
           <Image
-            src="/images/instagram.png"
+            src="/Images/instagram.png"
             alt=""
             width={18}
             height={18}
           />
-          <Image src="/images/twitter.png" alt="" width={18} height={18} />
-          <Image src="/images/youtube.png" alt="" width={18} height={18} />
+          <Image src="/Images/twitter.png" alt="" width={18} height={18} />
+          <Image src="/Images/youtube.png" alt="" width={18} height={18} />
         </div>
       </div>
 
