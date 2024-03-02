@@ -28,7 +28,7 @@ const Navbar = () => {
           height={24}
         /> */}
         <Image
-          src="/images/twitter.png"
+          src="/Images/twitter.png"
           alt="twitter icon"
           width={24}
           height={24}
