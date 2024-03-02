@@ -50,17 +50,25 @@ const MenuPosts = ({ withImage }) => {
   }
 
   // Handle both error and loading states with a unified approach
-  if (error || data?.length === 0) {
+  if (error) {
     return (
       <div className={styles.items}>
-        <p className={styles.errorText}>
-          {error
-            ? 'Unable to load menu posts'
-            : 'Menu posts are still loading. Please wait.'}
-        </p>
+        <p className={styles.errorText}>Unable to load menu posts'</p>
       </div>
     );
   }
+  // // Handle both error and loading states with a unified approach
+  // if (error || data?.length === 0) {
+  //   return (
+  //     <div className={styles.items}>
+  //       <p className={styles.errorText}>
+  //         {error
+  //           ? 'Unable to load menu posts'
+  //           : 'Menu posts are still loading. Please wait.'}
+  //       </p>
+  //     </div>
+  //   );
+  // }
   if (data?.length > 0) {
     return (
       <div className={styles.items}>

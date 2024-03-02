@@ -51,7 +51,7 @@ const CardList = ({ page, cat }) => {
     fetchData();
   }, [page, cat]);
 
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 6;
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
 
@@ -63,15 +63,10 @@ const CardList = ({ page, cat }) => {
     );
   }
 
-  // Handle both error and loading states with a unified approach
-  if (error || posts?.length === 0) {
+  if (error) {
     return (
       <div className={styles.container}>
-        <p className={styles.errorText}>
-          {error
-            ? 'Unable to load posts'
-            : 'Posts are still loading. Please wait.'}
-        </p>
+        <p className={styles.errorText}>Unable to load posts</p>
       </div>
     );
   }
