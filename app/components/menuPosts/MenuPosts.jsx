@@ -26,35 +26,11 @@ const MenuPosts = ({ withImage }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const result = await fetchPopularPosts();
-  //       setData(result);
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await fetchPopularPosts();
-
-        let data = await result.json();
-
-        // Add unique IDs to each item
-        data = data.map(item => ({
-          ...item,
-          uniqueId: crypto.randomUUID(),
-        }));
-
-        setData(data);
+        setData(result);
       } catch (error) {
         setError(error);
       } finally {
@@ -65,9 +41,33 @@ const MenuPosts = ({ withImage }) => {
     fetchData();
   }, []);
 
-  if (error) {
-    return;
-  }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const result = await fetchPopularPosts();
+
+  //       let data = await result.json();
+
+  //       // Add unique IDs to each item
+  //       data = data.map(item => ({
+  //         ...item,
+  //         uniqueId: crypto.randomUUID(),
+  //       }));
+
+  //       setData(data);
+  //     } catch (error) {
+  //       setError(error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // if (error) {
+  //   return;
+  // }
 
   if (isLoading) {
     return (
@@ -101,7 +101,7 @@ const MenuPosts = ({ withImage }) => {
     return (
       <div className={styles.items}>
         {data.map(post => (
-          <Link key={post.uniqueId} href="/" className={styles.item}>
+          <Link key={post.id} href="/" className={styles.item}>
             {withImage && (
               <div className={styles.imageContainer}>
                 <Image

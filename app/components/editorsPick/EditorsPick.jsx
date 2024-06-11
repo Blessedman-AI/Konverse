@@ -26,46 +26,46 @@ const EditorsPick = ({ withImage }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const result = await getEditorsPick();
-  //       setData(result);
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getEditorsPick();
-
-        let data = await response.json();
-
-        // Add unique IDs to each item
-        data = data.map(item => ({
-          ...item,
-          uniqueId: crypto.randomUUID(),
-        }));
-
-        setData(data);
+        const result = await getEditorsPick();
+        setData(result);
       } catch (error) {
         setError(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (error) {
-    return;
-  }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await getEditorsPick();
+
+  //       let data = await response.json();
+
+  //       // Add unique IDs to each item
+  //       data = data.map(item => ({
+  //         ...item,
+  //         uniqueId: crypto.randomUUID(),
+  //       }));
+
+  //       setData(data);
+  //     } catch (error) {
+  //       setError(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // if (error) {
+  //   return;
+  // }
 
   return (
     <div className={styles.items}>
@@ -75,7 +75,7 @@ const EditorsPick = ({ withImage }) => {
       {!isLoading && !error && data && (
         <>
           {data.map(post => (
-            <Link href="/" className={styles.item} key={post.uniqueId}>
+            <Link href="/" className={styles.item} key={post.id}>
               {withImage && (
                 <div className={styles.imageContainer}>
                   <Image
