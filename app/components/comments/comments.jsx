@@ -14,7 +14,6 @@ const Comments = ({ postSlug }) => {
   const [desc, setDesc] = useState('');
   const [feedback, setFeedback] = useState({ message: '', type: '' });
 
-  
   const { data, mutate, error, isValidating } = useSwr(
     `${API_URL}/api/comments?postSlug=${postSlug}`,
     async url => {
@@ -55,7 +54,7 @@ const Comments = ({ postSlug }) => {
       {status === 'authenticated' ? (
         <div className={styles.write}>
           <textarea
-            placeholder="write a comment..."
+            placeholder="Post a comment..."
             className={styles.input}
             value={desc}
             onChange={e => setDesc(e.target.value)}
