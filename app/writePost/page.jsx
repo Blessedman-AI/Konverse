@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import SuccessMessage from '../components/successMessage/SuccessMessage.jsx';
 import {
@@ -41,42 +42,104 @@ const WritePage = () => {
   const [clientErr, setClientErr] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
   const [showCatErrMsg, setCatErrMsg] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const resetCat = () => {
     setSelectedCat('');
   };
 
-  useEffect(() => {
-    const upload = () => {
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
+  // useEffect(() => {
+  //   const upload = () => {
+  //     const name = new Date().getTime() + file.name;
+  //     const storageRef = ref(storage, name);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+  //     const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        'state_changed',
-        snapshot => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-          }
-        },
-        error => {},
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            setMedia(downloadURL);
-          });
+  //     uploadTask.on(
+  //       'state_changed',
+  //       snapshot => {
+  //         const progress =
+  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //         setUploading(true);
+  //         // toast.loading('Uploading...');
+  //         console.log('Upload is ' + progress + '% done');
+  //         switch (snapshot.state) {
+  //           case 'paused':
+  //             // toast('Upload is paused');
+  //             console.log('Upload is paused');
+  //             break;
+  //         }
+  //       },
+  //       error => {
+  //         // toast.error('Upload failed');
+  //         console.error(error);
+  //         setUploading(false);
+  //       },
+  //       () => {
+  //         getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+  //           setMedia(downloadURL);
+  //           setUploading(false);
+  //           // toast.success('Upload successful');
+  //         });
+  //       }
+  //     );
+  //   };
+
+  //   file && upload();
+  // }, [file]);
+
+  const upload = file => {
+    const name = new Date().getTime() + file.name;
+    const storage = getStorage(app);
+    const storageRef = ref(storage, name);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    const toastId = toast.loading('Upload is starting...');
+
+    uploadTask.on(
+      'state_changed',
+      snapshot => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setUploading(true);
+        console.log(`Upload is ${progress.toFixed(2)}% done`);
+
+        switch (snapshot.state) {
+          case 'paused':
+            toast('Upload is paused', { id: toastId });
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            toast.loading(`Uploading... ${progress.toFixed()}% `, {
+              id: toastId,
+            });
+            // toast.loading('Upload is running', { id: toastId });
+            console.log('Upload is running');
+            break;
+          default:
+            break;
         }
-      );
-    };
+      },
+      error => {
+        toast.error('Upload failed', { id: toastId });
+        console.error(error);
+        setUploading(false);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+          setMedia(downloadURL);
+          setUploading(false);
+          toast.dismiss(toastId); // Dismiss the progress toast
+          toast.success('Upload successful');
+        });
+      }
+    );
+  };
 
-    file && upload();
+  useEffect(() => {
+    if (file) {
+      upload(file);
+    }
   }, [file]);
 
   if (status === 'loading') {

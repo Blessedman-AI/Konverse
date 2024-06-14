@@ -5,12 +5,13 @@ import Footer from './components/footer/Footer.jsx';
 import { ThemeContextProvider } from './context/ThemeContext.jsx';
 import ThemeProvider from './Providers/ThemeProvider.jsx';
 import AuthProvider from './Providers/AuthProvider';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'My blog',
-  description: 'The best blog ever!',
+  title: 'KonVerse',
+  description: 'Share your story!',
 };
 
 export default function RootLayout({ children }) {
@@ -20,9 +21,10 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <ThemeContextProvider>
             <ThemeProvider>
+              <Toaster />
+              <Navbar />
               <div className="container">
                 <div className="wrapper">
-                  <Navbar />
                   {children}
                   <Footer />
                 </div>

@@ -5,6 +5,9 @@ export const GET = async () => {
   try {
     const mostViewedPost = await prisma.post.findFirst({
       orderBy: { views: 'desc' },
+      include: {
+        user: true,
+      },
     });
 
     if (!mostViewedPost) {
@@ -21,6 +24,10 @@ export const GET = async () => {
       desc: mostViewedPost.desc,
       image: mostViewedPost.img,
       slug: mostViewedPost.slug,
+      user: {
+        name: mostViewedPost.user.name,
+        email: mostViewedPost.user.email,
+      },
     };
 
     return new NextResponse(

@@ -42,6 +42,10 @@ const FeaturedPost = () => {
     fetchData();
   }, []);
 
+  // function truncateString(str, num) {
+  //   return str.length > num ? str.substring(0, num) + '...' : str;
+  // }
+
   if (isLoading) {
     return (
       <div className={styles.container}>
@@ -63,21 +67,24 @@ const FeaturedPost = () => {
     );
   }
 
-  // console.log(data);
+  // console.log(data.user.name);
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <b>Hey, Beemhan dev here!</b> Discover my stories and creative
-        ideas
+        <b>Connect Through Content</b> <br />{' '}
+        <span className={styles.subtitle}>Explore. Create. Engage.</span>
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
           <Image src={data.image} alt="" fill className={styles.image} />
         </div>
         <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>{data.title}</h1>
-          <p className={styles.postDescription}>{data.desc}</p>
+          <span className={styles.author}>Posted by {data.user.name}</span>
+          <h2 className={styles.postTitle}>{data.title}</h2>
+          <p className={styles.postDescription}>
+            {data.desc.substring(0, 240) + '...'}
+          </p>
           <Link href={`/posts/${data.slug}`} className={styles.button}>
             Read More
           </Link>

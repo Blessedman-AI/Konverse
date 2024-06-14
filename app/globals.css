@@ -1,28 +1,6 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-:root {
-  --bg: #fff;
-  --textColor: black;
-  --softBg: #f0f0f0;
-  --softTextColor: #626262;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
 .dark {
   --bg: #0f172a;
@@ -37,18 +15,78 @@ a {
   --softTextColor: #626262;
 }
 
+:root {
+  /* --bg: #fff; */
+  background-color: var(--bg);
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+img {
+  border-radius: 10px;
+}
+button {
+  border-radius: 10px;
+}
+
+img {
+  border-radius: 30px;
+  background-size: contain; /* Scale the image to fit the container */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-position: top; /* Center the background image */
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .container {
   min-height: 100vh;
   margin: auto;
   background-color: var(--bg);
   color: var(--textColor);
+  padding-top: 60px;
 }
 .wrapper {
   max-width: 1536px;
   margin: auto;
   /* background-color: rebeccapurple; */
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.ql-container {
+  font-size: 28px !important;
+}
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  color: #b3b3b1;
 }
 
 @media screen and (max-width: 1536px) {
@@ -77,11 +115,4 @@ a {
   .wrapper {
     max-width: 575px;
   }
-}
-
-.ql-container{
-  font-size: 28px !important;
-}
-.quill > .ql-container > .ql-editor.ql-blank::before{
-  color: #b3b3b1;
 }

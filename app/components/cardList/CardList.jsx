@@ -70,7 +70,10 @@ const CardList = ({ page, cat }) => {
       </div>
     );
   }
-  // console.log(error?.message);
+
+  // if (posts?.length > 0) {
+  //   console.log(posts[0].user.name);
+  // }
 
   if (posts?.length > 0) {
     return (

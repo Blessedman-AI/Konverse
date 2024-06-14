@@ -20,6 +20,14 @@
   flex-direction: column;
   gap: 30px;
 }
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.innerDetails {
+  margin-top: 6px;
+}
 
 .date {
   color: gray;
@@ -29,6 +37,12 @@
   color: crimson;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.title {
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--softTextColor);
 }
 
 .desc {

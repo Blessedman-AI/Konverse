@@ -2,8 +2,8 @@ import prisma from '@/utils/connect';
 import { NextResponse } from 'next/server';
 
 const popularSlugs = [
-  '157326_my_third_food_post',
-  '141577_third_coding_post',
+  '100940_understanding_culture_the_fabric_of_human_societies',
+  '170138_exploring_the_world_the_joys_and_benefits_of_travel',
   '180660_first_travel_post',
   '156019_third_culture_post',
 ];

@@ -14,14 +14,14 @@ const Footer = () => {
             height={50}
             className={styles.logo}
           ></Image>
-          <h1 className={styles.logoText}>Beemhan's blog</h1>
+          <h1 className={styles.logoText}>KonVerse</h1>
         </div>
         <p className={styles.description}>
           "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
           consectetur, adipisci vel "Neque porro quisquam est qui dolorem
           ipsum quia dolor sit amet, consectetur, adipisci vel
         </p>
-        <div className={styles.icons}>
+        {/* <div className={styles.icons}>
           <Image
             src="/Images/facebook.png"
             alt=""
@@ -36,7 +36,7 @@ const Footer = () => {
           />
           <Image src="/Images/twitter.png" alt="" width={18} height={18} />
           <Image src="/Images/youtube.png" alt="" width={18} height={18} />
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.links}>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Menu from '../../components/menu/Menu';
 import styles from './singePage.module.css';
 import Comments from '../../components/comments/comments';
+import { formatDate } from '../../../utils/dateUtils';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -21,6 +22,7 @@ const SinglePage = async ({ params }) => {
 
   const data = await getData(slug);
   // console.log(`🚀🚀${data.post.desc}`);
+  const formattedDate = formatDate(data?.post.createdAt);
 
   return (
     <div className={styles.container}>
@@ -43,7 +45,7 @@ const SinglePage = async ({ params }) => {
                 {data?.post.user.name}
               </span>
 
-              <span className={styles.date}>12.12.2024</span>
+              <span className={styles.date}>{formattedDate}</span>
             </div>
           </div>
         </div>
